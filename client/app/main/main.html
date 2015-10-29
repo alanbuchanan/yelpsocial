@@ -1,0 +1,85 @@
+<div ng-include="'components/shell/shell.html'"></div>
+
+<!--<md-grid-list class="things-list" md-cols-sm="1" md-cols-md="2" md-cols-gt-md="5"-->
+<!--md-row-height-gt-md="1:1" md-row-height="4:3"-->
+<!--md-gutter="8px" md-gutter-gt-sm="4px">-->
+<!--<md-grid-tile ng-repeat="thing in awesomeThings" ng-class="getColor($index)" md-rowspan="{{getSpan($index)}}"-->
+<!--md-colspan="{{getSpan($index)}}"-->
+<!--md-colspan-sm="1">-->
+<!-- -->
+<!--<md-icon class="avatar-icon" md-svg-icon="avatar:svg-{{ ($index + 1) % 11 }}"></md-icon>-->
+<!--<md-grid-tile-footer><h3>{{thing.name}}</h3></md-grid-tile-footer>-->
+<!--</md-grid-tile>-->
+<!--</md-grid-list>-->
+
+<div class="container">
+
+  <!--SEARCH BOX-->
+  <md-content>
+    <form ng-submit="search(place)">
+      <md-input-container>
+        <input ng-model="place" placeholder="Search for a place"/>
+      </md-input-container>
+    </form>
+  </md-content>
+
+  <!--RESULTS-->
+  <md-content id="results">
+    <!--If loading-->
+    <img ng-show="isLoading" class="loading-spinner"
+         src="https://d1sysyohunu4k9.cloudfront.net/s/imgs/large_spinner.gif">
+
+    <!--If nowt found-->
+    <p ng-show="nowtFound">Nothing found for '{{ place }}'.</p>
+
+  </md-content>
+
+  <!--Else show me bars-->
+  <table>
+    <table ng-repeat="bar in bars">
+      <tr>
+        <td rowspan="2" id="thumbnail-container">
+          <!--Thumbnail image of bar-->
+          <img ng-src="{{bar.image_url}}" class="img-circle"/>
+        </td>
+        <td rowspan="1" colspan="2" id="info-container">
+          <!--Bar name header-->
+          <a ng-href="{{bar.url}}"><h1>{{ bar.name }}</h1></a>
+          <!--Star rating image-->
+          <img ng-src="{{bar.rating_img_url}}"/>
+
+        </td>
+        <td ng-show="isLoggedIn()" rowspan="2" id="going-container">
+          <!--'Going' button-->
+          <md-button ng-click="confirm($index)">
+            <md-icon md-svg-icon="action:input" md-menu-align-target></md-icon>
+            {{ bar.attendees.length || 0 }} going
+          </md-button>
+        </td>
+      </tr>
+
+      <tr>
+        <td rowspan="1" colspan="2">
+          <p><em>"{{ bar.snippet_text }}"</em></p>
+        </td>
+      </tr>
+
+    </table>
+  </table>
+  <!-- -->
+  <!--<md-list>-->
+  <!--<md-list-item ng-repeat="bar in bars.businesses">-->
+  <!--<div>-->
+  <!--<img ng-src="{{bar.image_url}}" class="img-circle"/>-->
+  <!--</div>-->
+  <!--<div>-->
+  <!--<h1>{{ bar.name }}</h1><br/>-->
+  <!--</div>-->
+  <!--<div>-->
+  <!--<p><em>"{{ bar.snippet_text }}"</em></p>-->
+  <!--</div>-->
+  <!--</md-list-item>-->
+  <!--</md-list>-->
+
+
+</div>
