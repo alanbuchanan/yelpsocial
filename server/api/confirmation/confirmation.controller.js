@@ -1,11 +1,11 @@
 'use strict';
 
 var _ = require('lodash');
-var Rsvp = require('./confirmation.model.js');
+var Confirmation = require('./confirmation.model.js');
 
 // Get a single confirmation
 exports.show = function (req, res) {
-  Rsvp.findOne({
+  Confirmation.find({
       // Query
       venue: req.params.barId
     },
@@ -18,7 +18,7 @@ exports.show = function (req, res) {
 };
 
 exports.create = function (req, res) {
-  Rsvp.findOneAndUpdate({
+  Confirmation.findOneAndUpdate({
     // Query
     venue: req.params.barId
   }, {
@@ -40,7 +40,7 @@ exports.create = function (req, res) {
 };
 
 exports.remove = function (req, res) {
-  Rsvp.findOneAndUpdate({
+  Confirmation.findOneAndUpdate({
     // Query
     venue: req.params.barId
   }, {

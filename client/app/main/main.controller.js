@@ -15,7 +15,6 @@ angular.module('yelpsocialApp')
       $http.get('/api/bars/' + place).success(function (data) {
         $scope.isLoading = false;
         $scope.bars = data.businesses;
-        console.log($scope.bars);
 
         // Get numbers for 'going' button
         $scope.bars.forEach(function (bar, index) {
@@ -39,8 +38,6 @@ angular.module('yelpsocialApp')
       originatorEv = ev;
       $mdOpenMenu(ev);
     };
-
-
 
     // User has clicked on a 'going' button, update DB
     $scope.confirm = function (index) {
