@@ -56,6 +56,12 @@
             {{ bar.attendees.length || 0 }} going
           </md-button>
         </td>
+        <td ng-show="!isLoggedIn()" rowspan="2">
+          <md-button href="/login">
+            <md-icon md-svg-icon="action:input" md-menu-align-target></md-icon>
+            Login to Confirm
+          </md-button>
+        </td>
       </tr>
 
       <tr>
