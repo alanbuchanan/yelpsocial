@@ -129,6 +129,10 @@ ul.rating {
 
 }
 
+input {
+  font-size: 20px !important;
+}
+
 /** {*/
   /*border: 1px solid pink;*/
 /*}*/
