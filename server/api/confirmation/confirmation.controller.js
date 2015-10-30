@@ -5,15 +5,16 @@ var Confirmation = require('./confirmation.model.js');
 
 // Get a single confirmation
 exports.show = function (req, res) {
+      //console.log(req.params);
   Confirmation.find({
       // Query
       venue: req.params.barId
     },
     // Projection
-    function (err, rsvp) {
+    function (err, confirmation) {
       if (err) { return handleError(res, err); }
-      if (!rsvp) { return res.status(404).send('Not Found'); }
-      return res.json(rsvp);
+      if (!confirmation) { return res.status(404).send('Not Found'); }
+      return res.json(confirmation);
     });
 };
 
@@ -31,11 +32,11 @@ exports.create = function (req, res) {
     upsert: true,
     new: true
     // Callback
-  }, function (err, rsvp) {
+  }, function (err, confirmation) {
     if (err) {
       return handleError(res, err);
     }
-    return res.status(201).json(rsvp);
+    return res.status(201).json(confirmation);
   });
 };
 
@@ -52,11 +53,11 @@ exports.remove = function (req, res) {
     // Options
     new: true
     // Callback
-  }, function (err, rsvp) {
+  }, function (err, confirmation) {
     if (err) {
       return handleError(res, err);
     }
-    return res.status(200).json(rsvp);
+    return res.status(200).json(confirmation);
   });
 };
 
