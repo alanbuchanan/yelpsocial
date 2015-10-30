@@ -46,7 +46,6 @@ angular.module('yelpsocialApp')
 
       var bar = $scope.bars[index];
 
-      console.log(bar);
       function dialog(title, content) {
         $mdDialog.show(
           $mdDialog.alert()
