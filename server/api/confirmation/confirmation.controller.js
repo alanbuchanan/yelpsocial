@@ -6,7 +6,7 @@ var Confirmation = require('./confirmation.model.js');
 // Get a single confirmation
 exports.show = function (req, res) {
       //console.log(req.params);
-  Confirmation.find({
+  Confirmation.findOne({
       // Query
       venue: req.params.barId
     },
