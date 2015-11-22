@@ -25,12 +25,15 @@ exports.create = function (req, res) {
   }, {
     // Doc
     $addToSet: {
+      // This is like array.push()
       attendees: req.params.userId
     }
   }, {
     // Options
+    new: true,
     upsert: true,
-    new: true
+    sort: false,
+    passRawResult: false
     // Callback
   }, function (err, confirmation) {
     if (err) {
@@ -47,11 +50,15 @@ exports.remove = function (req, res) {
   }, {
     // Doc
     $pull: {
+      // This is like deleting with array.splice()
       attendees: req.params.userId
     }
   }, {
     // Options
-    new: true
+    new: true,
+    upsert: false,
+    sort: false,
+    passRawResult: false
     // Callback
   }, function (err, confirmation) {
     if (err) {
